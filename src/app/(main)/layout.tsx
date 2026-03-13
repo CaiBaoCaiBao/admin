@@ -1,5 +1,10 @@
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+import MainLayoutComponent from "@/components/layout/main-layout"
+export default function MainLayout({
+    children
+}: {
+    children: React.ReactNode
+}) {
     return (<>
-        {children}
+        <MainLayoutComponent children={children} />
     </>)
 }
