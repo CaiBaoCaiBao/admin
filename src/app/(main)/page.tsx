@@ -1,65 +1,164 @@
-import Image from "next/image";
+'use client'
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Users, FileText, MessageSquare, MapPin, Mountain, ImageIcon, BarChart3, TrendingUp } from "lucide-react"
 
 export default function HomePage() {
+  const stats = [
+    {
+      title: "总用户数",
+      value: "1,234",
+      change: "+12.5%",
+      icon: Users,
+      color: "text-blue-600",
+      bgColor: "bg-blue-100 dark:bg-blue-900/20",
+    },
+    {
+      title: "游记总数",
+      value: "567",
+      change: "+8.2%",
+      icon: FileText,
+      color: "text-green-600",
+      bgColor: "bg-green-100 dark:bg-green-900/20",
+    },
+    {
+      title: "评论总数",
+      value: "2,345",
+      change: "+15.3%",
+      icon: MessageSquare,
+      color: "text-purple-600",
+      bgColor: "bg-purple-100 dark:bg-purple-900/20",
+    },
+    {
+      title: "目的地数",
+      value: "89",
+      change: "+5.1%",
+      icon: MapPin,
+      color: "text-orange-600",
+      bgColor: "bg-orange-100 dark:bg-orange-900/20",
+    },
+  ]
+
+  const quickActions = [
+    {
+      title: "用户管理",
+      description: "管理系统用户，查看用户信息",
+      icon: Users,
+      href: "/users",
+      color: "bg-blue-500",
+    },
+    {
+      title: "游记管理",
+      description: "审核和管理用户游记",
+      icon: FileText,
+      href: "/travel-notes",
+      color: "bg-green-500",
+    },
+    {
+      title: "评论管理",
+      description: "管理用户评论和反馈",
+      icon: MessageSquare,
+      href: "/comments",
+      color: "bg-purple-500",
+    },
+    {
+      title: "目的地管理",
+      description: "管理旅游目的地信息",
+      icon: MapPin,
+      href: "/destinations",
+      color: "bg-orange-500",
+    },
+    {
+      title: "景点管理",
+      description: "管理景点详细信息",
+      icon: Mountain,
+      href: "/attractions",
+      color: "bg-red-500",
+    },
+    {
+      title: "轮播图管理",
+      description: "管理首页轮播图",
+      icon: ImageIcon,
+      href: "/banners",
+      color: "bg-pink-500",
+    },
+  ]
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="space-y-6">
+      {/* 欢迎标题 */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">仪表盘</h1>
+        <p className="text-muted-foreground">
+          欢迎来到 Trip 管理后台，这里是系统概览
+        </p>
+      </div>
+
+      {/* 统计卡片 */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <Card key={stat.title}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                {stat.title}
+              </CardTitle>
+              <div className={`rounded-lg p-2 ${stat.bgColor}`}>
+                <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stat.value}</div>
+              <p className="text-xs text-muted-foreground">
+                <span className="text-green-600 flex items-center gap-1">
+                  <TrendingUp className="h-3 w-3" />
+                  {stat.change}
+                </span>
+                {" "}较上月
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* 快捷操作 */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {quickActions.map((action) => (
+          <Card key={action.title} className="hover:shadow-md transition-shadow cursor-pointer">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className={`rounded-lg p-2 ${action.color}`}>
+                  <action.icon className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-base">{action.title}</CardTitle>
+                  <CardDescription className="text-xs">
+                    {action.description}
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
+
+      {/* 数据统计 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>数据统计</CardTitle>
+          <CardDescription>
+            查看系统各项数据的详细统计信息
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center justify-center h-64 text-muted-foreground">
+            <div className="text-center">
+              <BarChart3 className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>图表组件待开发</p>
+              <p className="text-sm">将显示用户增长、游记发布等趋势数据</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
-  );
+  )
 }

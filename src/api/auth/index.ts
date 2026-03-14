@@ -1,10 +1,12 @@
 import { request } from "@/config/axios"
+import { logout as logoutApi } from './logout'
 
 // ==================== 类型定义 ====================
 
 export interface AdminLoginDTO {
     userName: string
-    password: string
+    key: string
+    loginMethod: string
     rememberMe: boolean
 }
 
@@ -25,6 +27,14 @@ const AuthApi = {
      */
     getMyProfile: async () => {
         return await request.get('/user/api/my-profile')
+    },
+
+    /**
+     * 登出
+     * POST /auth/api/logout
+     */
+    logout: async () => {
+        return await logoutApi()
     }
 }
 

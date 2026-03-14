@@ -49,10 +49,16 @@ export const tokenService = {
         localStorage.removeItem(REFRESH_TOKEN_KEY);
     },
 
-    // 清除所有 Token
+    // 清除所有 Token（包括 localStorage 和 cookie）
     clearAll: () => {
         tokenService.removeAccessToken();
         tokenService.removeRefreshToken();
+        
+        // 清除 cookie
+        if (typeof window !== 'undefined') {
+            document.cookie = 'access_token=; path=/; max-age=0; SameSite=Lax';
+            document.cookie = 'refresh_token=; path=/; max-age=0; SameSite=Lax';
+        }
     }
 };
 
