@@ -14,35 +14,38 @@ export interface CreateBannerDTO {
     title: string
     image: string
     linkType: number
-    linkId?: string
-    sortOrder?: number
+    targetId?: string
+    linkUrl?: string
+    sort?: number
     status?: number
 }
 
 export interface UpdateBannerDTO {
-    bannerId: string
+    id: number
     title?: string
     image?: string
     linkType?: number
-    linkId?: string
-    sortOrder?: number
+    targetId?: string
+    linkUrl?: string
+    sort?: number
     status?: number
 }
 
 export interface DeleteBannerDTO {
-    bannerIds: string[]
+    ids: number[]
 }
 
 export interface BannerVO {
-    bannerId: string
+    id: number
     title: string
     image: string
     linkType: number
-    linkId: string
-    sortOrder: number
+    targetId: string
+    linkUrl: string
+    sort: number
     status: number
-    createTime: string
-    updateTime: string
+    createdAt: string
+    updatedAt: string
 }
 
 // ==================== API 接口 ====================
@@ -78,6 +81,14 @@ const BannerApi = {
      */
     batchDelete: async (data: DeleteBannerDTO) => {
         return await request.delete('/banner/admin-api/delete', { data })
+    },
+
+    /**
+     * 获取启用的轮播图列表
+     * GET /banner/api/active
+     */
+    getActive: async () => {
+        return await request.get('/banner/api/active')
     }
 }
 

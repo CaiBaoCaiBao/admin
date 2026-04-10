@@ -4,6 +4,8 @@ import { request } from "@/config/axios"
 
 export interface QueryDestinationDTO {
     name?: string
+    province?: string
+    city?: string
     status?: number
     pageNum?: number
     pageSize?: number
@@ -11,21 +13,31 @@ export interface QueryDestinationDTO {
 
 export interface CreateDestinationDTO {
     name: string
+    aliasesName?: string
     description?: string
-    coverImage?: string
-    images?: string[]
-    location?: string
+    coverImg?: string
+    province?: string
+    city?: string
+    level?: number
+    bestSeason?: string
+    travelDays?: number
     status?: number
+    sortOrder?: number
 }
 
 export interface UpdateDestinationDTO {
     destinationId: string
     name?: string
+    aliasesName?: string
     description?: string
-    coverImage?: string
-    images?: string[]
-    location?: string
+    coverImg?: string
+    province?: string
+    city?: string
+    level?: number
+    bestSeason?: string
+    travelDays?: number
     status?: number
+    sortOrder?: number
 }
 
 export interface DeleteDestinationDTO {
@@ -35,13 +47,24 @@ export interface DeleteDestinationDTO {
 export interface DestinationVO {
     destinationId: string
     name: string
-    description: string
-    coverImage: string
-    images: string[]
-    location: string
-    status: number
-    createTime: string
-    updateTime: string
+    aliasesName?: string
+    coverImg?: string
+    description?: string
+    province?: string
+    city?: string
+    level?: number
+    bestSeason?: string
+    travelDays?: number
+    viewCount?: number
+    status?: number
+    sortOrder?: number
+}
+
+export interface PageResult<T> {
+    records: T[]
+    total: number
+    page: number
+    pageSize: number
 }
 
 // ==================== API 接口 ====================

@@ -4,7 +4,8 @@ import { request } from "@/config/axios"
 
 export interface QueryCommentDTO {
     targetType: string
-    targetId: string
+    targetId?: string
+    keyword?: string
     page?: number
     pageSize?: number
 }
@@ -16,9 +17,15 @@ export interface DeleteCommentDTO {
 export interface CommentVO {
     commentId: string
     userId: string
+    username?: string
+    nickname?: string
+    avatar?: string
     targetType: string
     targetId: string
+    parentCommentId?: string
     content: string
+    likeCount?: number
+    isLiked?: boolean
     createTime: string
     updateTime: string
 }

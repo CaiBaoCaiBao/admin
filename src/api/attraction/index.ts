@@ -14,38 +14,52 @@ export interface CreateAttractionDTO {
     destinationId: string
     name: string
     description?: string
-    coverImage?: string
     images?: string[]
-    location?: string
+    address?: string
+    phone?: string
+    // longitude?: number
+    // latitude?: number
+    sortOrder?: number
+    realTimeSyncFlag?: boolean
     status?: number
 }
 
 export interface UpdateAttractionDTO {
-    attractionId: string
+    aid: string
     destinationId?: string
     name?: string
     description?: string
-    coverImage?: string
     images?: string[]
-    location?: string
+    address?: string
+    phone?: string
+    // longitude?: number
+    // latitude?: number
+    sortOrder?: number
+    realTimeSyncFlag?: boolean
     status?: number
 }
 
 export interface DeleteAttractionDTO {
-    attractionIds: string[]
+    aids: string[]
 }
 
 export interface AttractionVO {
-    attractionId: string
+    id: number
+    aid: string
     destinationId: string
     name: string
     description: string
-    coverImage: string
     images: string[]
-    location: string
-    status: number
-    createTime: string
-    updateTime: string
+    address: string | null
+    phone: string | null
+    // longitude: number | null
+    // latitude: number | null
+    viewCount: number
+    status: number | null
+    sortOrder: number | null
+    realTimeSyncFlag: boolean
+    createdAt: string
+    updatedAt: string
 }
 
 // ==================== API 接口 ====================
@@ -63,8 +77,8 @@ const AttractionApi = {
      * 获取景点详情
      * GET /attraction/api/detail
      */
-    detail: async (attractionId: string) => {
-        return await request.get('/attraction/api/detail', { params: { attractionId } })
+    detail: async (aid: string) => {
+        return await request.get('/attraction/api/detail', { params: { aid } })
     },
 
     /**

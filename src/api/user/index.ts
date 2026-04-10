@@ -12,30 +12,32 @@ export interface QueryUserListDTO {
 }
 
 export interface UpdateUserStatusDTO {
-    uUid: string
+    uuid: string
     status: string
 }
 
 export interface ResetPasswordDTO {
-    uUid: string
+    uuid: string
     newPassword: string
     confirmPassword: string
 }
 
 export interface DeleteUserDTO {
-    uIds: string[]
+    uuids: string[]
 }
 
 export interface UserInfoVO {
-    uUid: string
+    uuid: string
     userName: string
     email: string
     nickName: string
     avatar: string
     role: string
     status: string
-    createTime: string
-    updateTime: string
+    createTime?: string
+    updateTime?: string
+    createdAt?: string
+    updatedAt?: string
 }
 
 // ==================== API 接口 ====================

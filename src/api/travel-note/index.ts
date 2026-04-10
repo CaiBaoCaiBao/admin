@@ -30,7 +30,10 @@ export interface DeleteTravelNoteDTO {
 export interface TravelNoteVO {
     noteId: string
     userId: string
+    userName?: string
+    userNickName?: string
     destinationId: string
+    destinationName?: string
     title: string
     content: string
     images: string[]
@@ -47,11 +50,11 @@ export interface TravelNoteVO {
 
 const TravelNoteApi = {
     /**
-     * 查询游记列表
-     * GET /travel-note/api/list
+     * 查询游记列表（管理员专用，可查看所有状态的游记）
+     * GET /travel-note/admin-api/list
      */
     list: async (params: QueryTravelNoteDTO) => {
-        return await request.get('/travel-note/api/list', { params })
+        return await request.get('/travel-note/admin-api/list', { params })
     },
 
     /**
