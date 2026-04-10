@@ -969,8 +969,8 @@ export default function AttractionsPage() {
                                                             <p>
                                                                 {item.discountPrice && Number(item.discountPrice) > 0 && Number(item.discountPrice) < Number(item.price) ? (
                                                                     <>
-                                                                        <span className="line-through text-muted-foreground">¥{Number(item.price).toFixed(2)}</span>
-                                                                        <span className="text-red-600 ml-2">优惠价: ¥{Number(item.discountPrice).toFixed(2)}</span>
+                                                                        <p className="line-through text-muted-foreground">原价: ¥{Number(item.price).toFixed(2)}</p>
+                                                                        <p className="text-red-600">优惠价: ¥{Number(item.discountPrice).toFixed(2)}</p>
                                                                     </>
                                                                 ) : (
                                                                     <>价格: ¥{Number(item.price).toFixed(2)}</>

@@ -43,10 +43,10 @@ const CommentApi = {
 
     /**
      * 删除评论
-     * DELETE /comment/api/delete
+     * POST /comment/api/delete
      */
     delete: async (data: DeleteCommentDTO) => {
-        return await request.delete('/comment/api/delete', { data })
+        return await request.post('/comment/api/delete', data)
     },
 
     /**

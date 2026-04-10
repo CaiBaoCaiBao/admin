@@ -77,11 +77,11 @@ export const navGroups: NavGroup[] = [
         href: "/statistics",
         icon: BarChart3,
       },
-      {
-        title: "系统设置",
-        href: "/settings",
-        icon: Settings,
-      },
+      // {
+      //   title: "系统设置",
+      //   href: "/settings",
+      //   icon: Settings,
+      // },
     ],
   },
 ]
